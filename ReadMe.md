@@ -9,4 +9,4 @@
 Go to http://localhost:8000/
 
 ###### Contributors
-Gentella Template from https://github.com/GiriB/django-gentelella.git
+Gentelella Template from https://github.com/GiriB/django-gentelella.git

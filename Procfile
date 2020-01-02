@@ -1,0 +1,1 @@
+web: gunicorn modules.gentelella.wsgi --log-file -
