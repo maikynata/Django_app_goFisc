@@ -1,1 +1,1 @@
-web: gunicorn gentelella.wsgi --log-file -
+web: gunicorn modules.gentelella.wsgi --log-file -
