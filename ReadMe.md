@@ -1,8 +1,7 @@
 ##### Install requirements 
     pip install -r requirements.txt
 
-##### Run the code
-    cd gentelella
+##### Run the project
     python manage.py runserver 
     
 ##### Start!
