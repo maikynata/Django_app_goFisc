@@ -88,10 +88,10 @@ WSGI_APPLICATION = 'gentelella.wsgi.application'
 DATABASES = {
     'default': {
         'ENGINE': 'django.db.backends.mysql',
-        'NAME': 'bd20190207165244',
-        'USER': 'root',
-        'PASSWORD': '',
-        'HOST': '127.0.0.1',
+        'NAME': 'xml',
+        'USER': 'newuser',
+        'PASSWORD': 'password1',
+        'HOST': '192.168.25.5',
         'PORT': '3306',
     }
 }
