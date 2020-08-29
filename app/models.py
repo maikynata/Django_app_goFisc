@@ -7,6 +7,11 @@
 # Feel free to rename the models, but don't rename db_table values or field names.
 from django.db import models
 
+class Document(models.Model):
+    description = models.CharField(max_length=255, blank=True)
+    document = models.FileField(upload_to='documents/')
+    uploaded_at = models.DateTimeField(auto_now_add=True)
+
 
 class NFCe(models.Model):
     nfce_versao = models.DecimalField(max_digits=3, decimal_places=2, blank=True, null=True)
