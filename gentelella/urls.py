@@ -19,7 +19,7 @@ from django.contrib import admin
 from django.urls import path, re_path
 from django.conf import settings
 from django.conf.urls.static import static
-from app.views import profile_upload
+from app.views import form_upload
 
 
 urlpatterns = [
@@ -27,7 +27,5 @@ urlpatterns = [
 
     # app/ -> Genetelella UI and resources
     url(r'^app/', include('app.urls')),
-    url(r'^', include('app.urls')),
-    path('upload-csv/', profile_upload, name="profile_upload"),
-
+    url(r'^', include('app.urls'))
 ]

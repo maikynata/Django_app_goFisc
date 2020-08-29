@@ -4,7 +4,8 @@ from django.http import HttpResponse
 import csv, io
 from django.contrib import messages
 from .models import Reg0200
-
+from django.conf import settings
+from django.core.files.storage import FileSystemStorage
 
 def index(request):
     context = {}
@@ -23,34 +24,26 @@ def gentella_html(request):
     return HttpResponse(template.render(context, request))
 
 # one parameter named request
-def profile_upload(request):
-    # declaring template
-    template = "form_upload.html"
-    data = Reg0200.objects.all()
-# prompt is a context variable that can have different values      depending on their context
-    prompt = {
-        'order': 'Order of the CSV should be name, email, address,    phone, profile',
-        'profiles': data    
-              }
-    # GET request returns the value of the data with the specified key.
-    if request.method == "POST":
-        return render(request, template, prompt)
-    csv_file = request.FILES['file']
-    # let's check if it is a csv file
-    if not csv_file.name.endswith('.csv'):
-        messages.error(request, 'THIS IS NOT A CSV FILE')
-    data_set = csv_file.read().decode('UTF-8')
-    # setup a stream which is when we loop through each line we are able to handle a data in a stream
-    io_string = io.StringIO(data_set)
-    next(io_string)
-    for column in csv.reader(io_string, delimiter=',', quotechar="|"):
-        _, created = Reg0200.objects.update_or_create(
-            name=column[0],
-            email=column[1],
-            address=column[2],
-            phone=column[3],
-            profile=column[4]
-        )
-    context = {}
-    return render(request, template, context)
+def form_upload(request):
+    if request.method == 'POST' and request.FILES['myfile']:
+        myfile = request.FILES['myfile']
+        fs = FileSystemStorage()
+        filename = fs.save(myfile.name, myfile)
+        uploaded_file_url = fs.url(filename)
+        return render(request, 'form_upload.html', {
+            'uploaded_file_url': uploaded_file_url
+        })
+    return render(request, 'form_upload.html')
 
+
+def model_form_upload(request):
+    if request.method == 'POST':
+        form = DocumentForm(request.POST, request.FILES)
+        if form.is_valid():
+            form.save()
+            return redirect('index.html')
+    else:
+        form = DocumentForm()
+    return render(request, 'core/model_form_upload.html', {
+        'form': form
+    })
