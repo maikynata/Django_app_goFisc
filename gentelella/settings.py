@@ -95,7 +95,7 @@ DATABASES = {
         'NAME': 'xml',
         'USER': 'newuser',
         'PASSWORD': 'password1',
-        'HOST': '192.168.25.5',
+        'HOST': '192.168.25.3',
         'PORT': '3306',
     }
 }
