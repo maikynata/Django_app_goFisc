@@ -7,5 +7,5 @@
 ##### Start!
 Go to http://localhost:8000/
 
-###### Contributors 
+###### Frontend Template Credits
 Gentelella Template from https://github.com/GiriB/django-gentelella.git
