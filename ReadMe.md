@@ -1,4 +1,4 @@
-##### Install requirements 
+##### Create a venv and install the requirements 
     pip install -r requirements.txt
 
 ##### Run the project
