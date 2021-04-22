@@ -1,6 +1,8 @@
 from django.contrib import admin
 
 # Register your models here.
-from .models import Reg0200
+from .models import NFCe
+from .models import Tabelaexternareferenciada
 
-admin.site.register(Reg0200)
+admin.site.register(NFCe)
+admin.site.register(Tabelaexternareferenciada)
