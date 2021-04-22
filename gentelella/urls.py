@@ -28,5 +28,4 @@ urlpatterns = [
     # app/ -> Genetelella UI and resources
     url(r'^app/', include('app.urls')),
     url(r'^', include('app.urls')),
-    url(r'^upload/csv/$', views.form_upload, name='form_upload'),
 ]
