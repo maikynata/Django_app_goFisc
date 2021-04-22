@@ -43,10 +43,18 @@
             </div>
             <div class="x_content">
               <p>Drag multiple files to the box below for multi upload or click to select files. This is for demonstration purposes only, the files are not uploaded to any server.</p>
-              <form action="{% url "form_upload" %}" method="POST" enctype="multipart/form-data" class="dropzone">
+              {% if messages %}
+                {% for message in messages %}
+                  <div>
+                    <strong>{{message|safe}}</strong>
+                  </div>
+                {% endfor %}
+              {% else %}
+              {{order}}
+              <form method="POST" enctype="multipart/form-data" class="dropzone">
                 {% csrf_token %}
                 <div class="form-group">
-                  <label for="name" class="col-md-3 col-sm-3 col-xs-12 control-label">File: </label>
+                  <label for="name" class="col-md-3 col-sm-3 col-xs-12 control-label">File csv: </label>
                   <div class="col-md-8">
                     <input type="file" name="csv_file" id="csv_file" required="True" class="form-control">
                   </div>
@@ -58,6 +66,10 @@
                   </div>
                 </div>
               </form>
+              {% endif %}
+              {% for profile in profiles %}
+              {{profile.name}}
+              {% endfor %}
               <br />
               <br />
               <br />
