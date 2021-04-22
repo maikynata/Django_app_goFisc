@@ -253,53 +253,6 @@ class NFe(models.Model):
         db_table = 'nfe'
 
 
-class Docentrada(models.Model):
-    strchave = models.CharField(db_column='strChave', max_length=24, blank=True, null=True)  # Field name made lowercase.
-    strreg = models.CharField(db_column='strReg', max_length=4, blank=True, null=True)  # Field name made lowercase.
-    strid = models.BigIntegerField(db_column='strId')  # Field name made lowercase.
-    dataemissao = models.DateField(db_column='dataEmissao', blank=True, null=True)  # Field name made lowercase.
-    datadeentrada = models.DateField(db_column='dataDeEntrada', blank=True, null=True)  # Field name made lowercase.
-    dataordem = models.DateField(db_column='dataOrdem', blank=True, null=True)  # Field name made lowercase.
-    strnumero = models.IntegerField(db_column='strNumero', blank=True, null=True)  # Field name made lowercase.
-    strcodigomodelo = models.CharField(db_column='strCodigomodelo', max_length=2, blank=True, null=True)  # Field name made lowercase.
-    strserie = models.CharField(db_column='strSerie', max_length=4, blank=True, null=True)  # Field name made lowercase.
-    strsubserie = models.CharField(db_column='strSubSerie', max_length=3, blank=True, null=True)  # Field name made lowercase.
-    strsituacao = models.CharField(db_column='strSituacao', max_length=2, blank=True, null=True)  # Field name made lowercase.
-    cod_part = models.CharField(db_column='COD_PART', max_length=60, blank=True, null=True)  # Field name made lowercase.
-    stridpaireg0150 = models.BigIntegerField(db_column='strIdPaiReg0150', blank=True, null=True)  # Field name made lowercase.
-    strcnpj = models.CharField(db_column='strCnpj', max_length=100, blank=True, null=True)  # Field name made lowercase.
-    strcpf = models.CharField(db_column='strCpf', max_length=100, blank=True, null=True)  # Field name made lowercase.
-    strie = models.CharField(db_column='strIE', max_length=100, blank=True, null=True)  # Field name made lowercase.
-    strmunicipio = models.CharField(db_column='strMunicipio', max_length=100, blank=True, null=True)  # Field name made lowercase.
-    struf = models.CharField(db_column='strUF', max_length=2, blank=True, null=True)  # Field name made lowercase.
-    strrazaosocial = models.CharField(db_column='strRazaoSocial', max_length=100, blank=True, null=True)  # Field name made lowercase.
-
-    class Meta:
-        managed = True
-        db_table = 'docentrada'
-
-
-class Inconsistencia(models.Model):
-    id = models.BigAutoField(db_column='ID', primary_key=True)  # Field name made lowercase.
-    tipo = models.CharField(db_column='TIPO', max_length=1)  # Field name made lowercase.
-    id_mensagem = models.CharField(db_column='ID_MENSAGEM', max_length=100)  # Field name made lowercase.
-    id_campo = models.CharField(db_column='ID_CAMPO', max_length=50, blank=True, null=True)  # Field name made lowercase.
-    valor_campo = models.CharField(db_column='VALOR_CAMPO', max_length=1024, blank=True, null=True)  # Field name made lowercase.
-    valor_esperado_campo = models.CharField(db_column='VALOR_ESPERADO_CAMPO', max_length=256, blank=True, null=True)  # Field name made lowercase.
-    nome_registro = models.CharField(db_column='NOME_REGISTRO', max_length=10, blank=True, null=True)  # Field name made lowercase.
-    conteudo_linha = models.CharField(db_column='CONTEUDO_LINHA', max_length=2048, blank=True, null=True)  # Field name made lowercase.
-    numero_linha = models.BigIntegerField(db_column='NUMERO_LINHA', blank=True, null=True)  # Field name made lowercase.
-    id_registro_bd = models.BigIntegerField(db_column='ID_REGISTRO_BD', blank=True, null=True)  # Field name made lowercase.
-    id_registro_pai_bd = models.BigIntegerField(db_column='ID_REGISTRO_PAI_BD', blank=True, null=True)  # Field name made lowercase.
-    parametros_mensagem = models.CharField(db_column='PARAMETROS_MENSAGEM', max_length=500, blank=True, null=True)  # Field name made lowercase.
-
-    class Meta:
-        managed = True
-        db_table = 'inconsistencia'
-# Unable to inspect table 'metainf'
-# The error was: (1932, "Table 'bd20190207165244.metainf' doesn't exist in engine")
-
-
 class Reg0000(models.Model):
     id = models.BigIntegerField(db_column='ID', primary_key=True)  # Field name made lowercase.
     id_pai = models.BigIntegerField(db_column='ID_PAI')  # Field name made lowercase.
@@ -4074,3 +4027,6 @@ class Tabelaexternareferenciada(models.Model):
     class Meta:
         managed = True
         db_table = 'tabelaexternareferenciada'
+
+    def __str__(self):
+        return self.tipo+" : "+self.listaufs
