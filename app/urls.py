@@ -14,5 +14,6 @@ urlpatterns = [
 
     # The home page
     path('', views.index, name='index'),
-    path('form_upload/', form_upload, name="form_upload")
+    path('form_upload/', views.form_upload, name="form_upload")
+    # path(r'^form_upload/csv/$', views.form_upload, name='form_upload')
 ]
